@@ -1,2 +1,1 @@
-# Fahim
-Fahim
+This is index.html of SCPSC 
