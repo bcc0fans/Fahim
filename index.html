@@ -1,0 +1,2999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savar Cantonment Public School and College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="public/images/logo.jpeg" type="image/jpeg">
+    <meta name="description" content="SCPSC - Excellence in Education Since 1977. Premier educational institution in Savar Cantonment, Dhaka, Bangladesh.">
+    <meta name="keywords" content="SCPSC, Savar Cantonment, Public School, College, Education, Dhaka, Bangladesh, Army School">
+    
+    <style>
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --shadow: rgba(0,0,0,0.1);
+            --border-color: #e0e0e0;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            --gradient-3: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --blood-red: #dc2626;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #ecf0f1;
+            --bg-color: #1a1a1a;
+            --card-bg: #2c2c2c;
+            --shadow: rgba(0,0,0,0.4);
+            --border-color: #444;
+            --gradient-1: linear-gradient(135deg, #4a69bd 0%, #6c5ce7 100%);
+            --gradient-2: linear-gradient(45deg, #fd79a8, #e84393);
+            --gradient-3: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(30, 60, 114, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            margin-right: 12px;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            border-color: rgba(255,255,255,0.8);
+            transform: rotate(360deg);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-menu li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu li a:hover::before {
+            left: 0;
+        }
+
+        .nav-menu li a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .helpline-link {
+            background: linear-gradient(45deg, var(--blood-red), #ef4444) !important;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            color: white;
+            padding: 0.7rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-left: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .theme-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(180deg);
+            border-color: white;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('public/images/SavarCantonmentPublicSchoolandCollege.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(30, 60, 114, 0.3), rgba(42, 82, 152, 0.3));
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: heroFadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            font-weight: 800;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 3px 3px 10px rgba(0,0,0,0.8); }
+            50% { text-shadow: 3px 3px 20px rgba(52, 152, 219, 0.5); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+            font-weight: 300;
+            animation: subtitleSlide 1.5s ease 0.5s both;
+        }
+
+        @keyframes subtitleSlide {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-2);
+            color: white;
+            padding: 1.3rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 140px 2rem 2rem;
+            animation: pageSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes pageSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            color: var(--text-color);
+            position: relative;
+            font-weight: 800;
+            animation: titleReveal 1s ease;
+        }
+
+        @keyframes titleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 5px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+            animation: underlineGrow 1s ease 0.5s both;
+        }
+
+        @keyframes underlineGrow {
+            0% { width: 0; }
+            100% { width: 150px; }
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            animation: cardFadeIn 0.8s ease;
+        }
+
+        @keyframes cardFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px var(--shadow);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.2) rotate(360deg);
+            color: #e74c3c;
+        }
+
+        .card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-color);
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover h3 {
+            color: var(--accent-color);
+        }
+
+        .card p {
+            color: var(--text-color);
+            line-height: 1.8;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover p {
+            opacity: 1;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: statSlideUp 0.8s ease;
+        }
+
+        @keyframes statSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.8s ease;
+        }
+
+        .stat-item:hover::before {
+            animation: shine 0.8s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .stat-item:hover {
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+            animation: numberCount 2s ease;
+        }
+
+        .stat-label {
+            font-size: 1.3rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            animation: galleryFadeIn 0.8s ease;
+        }
+
+        @keyframes galleryFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 60px var(--shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.9), rgba(155, 89, 182, 0.9));
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: iconPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            cursor: pointer;
+            animation: lightboxFadeIn 0.3s ease;
+        }
+
+        @keyframes lightboxFadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: lightboxZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes lightboxZoomIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 0 100px rgba(255,255,255,0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.7);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(231, 76, 60, 0.8);
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .lightbox-info {
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .lightbox-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lightbox-info p {
+            opacity: 0.8;
+        }
+
+        .routine-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 3rem 0;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px var(--shadow);
+            animation: tableSlideIn 0.8s ease;
+        }
+
+        @keyframes tableSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .routine-table th,
+        .routine-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .routine-table th {
+            background: var(--gradient-1);
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .routine-table tr {
+            transition: all 0.3s ease;
+        }
+
+        .routine-table tr:hover {
+            background: rgba(52, 152, 219, 0.1);
+            transform: scale(1.01);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow);
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+            animation: formSlideUp 0.8s ease;
+        }
+
+        @keyframes formSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            animation: inputFadeIn 0.6s ease;
+        }
+
+        @keyframes inputFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            background: var(--gradient-2);
+            color: white;
+            padding: 1.3rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            animation: buttonFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .developer-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .developer-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .developer-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .developer-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 4px solid rgba(255,255,255,0.5);
+            object-fit: cover;
+        }
+
+        .developer-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .developer-role {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .developer-bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: footerShine 4s ease-in-out infinite;
+        }
+
+        @keyframes footerShine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            animation: footerFadeIn 1s ease;
+        }
+
+        @keyframes footerFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-color);
+        }
+
+        .about-text h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .about-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Blood Donor System Styles */
+        .blood-donor-section {
+            background: linear-gradient(135deg, var(--blood-red), #ef4444);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.3);
+        }
+
+        .blood-donor-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .blood-groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .blood-group-card {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .blood-group-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255,255,255,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .blood-group-card h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .blood-group-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .donor-form {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .donor-form h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .donor-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .donor-form label {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .donor-form input,
+        .donor-form select {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .donor-form input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .donor-form input:focus,
+        .donor-form select:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.3);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .donor-form select option {
+            background: var(--blood-red);
+            color: white;
+        }
+
+        .donor-submit-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin: 2rem auto 0;
+        }
+
+        .donor-submit-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .donors-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 3rem 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .donors-table th,
+        .donors-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .donors-table th {
+            background: rgba(255,255,255,0.2);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .donors-table tr:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .blood-group-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .emergency-contact {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .emergency-contact h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .emergency-contact p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                width: 100%;
+                text-align: center;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 2rem 0;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 10px 30px var(--shadow);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .routine-table {
+                font-size: 0.9rem;
+            }
+
+            .routine-table th,
+            .routine-table td {
+                padding: 0.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .blood-groups-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+            }
+
+            .blood-group-card {
+                padding: 1.5rem;
+            }
+
+            .blood-group-card h3 {
+                font-size: 2rem;
+            }
+
+            .donor-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .page {
+                padding: 120px 1rem 2rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .blood-groups-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blood-donor-section {
+                padding: 2rem 1rem;
+            }
+
+            .blood-donor-section h2 {
+                font-size: 2rem;
+            }
+
+            .donors-table {
+                font-size: 0.8rem;
+            }
+
+            .donors-table th,
+            .donors-table td {
+                padding: 0.5rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        ::selection {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        *:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+</div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <img src="logo.jpeg" alt="SCPSC Logo">
+                <span>SCPSC</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#" onclick="showPage('academics')"><i class="fas fa-graduation-cap"></i> Academics</a></li>
+                <li><a href="#" onclick="showPage('facilities')"><i class="fas fa-building"></i> Facilities</a></li>
+                <li><a href="#" onclick="showPage('routine')"><i class="fas fa-calendar"></i> Routine</a></li>
+                <li><a href="#" onclick="showPage('information')"><i class="fas fa-info"></i> Information</a></li>
+                <li><a href="#" onclick="showPage('admission')"><i class="fas fa-user-plus"></i> Admission</a></li>
+                <li><a href="#" onclick="showPage('gallery')"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#" onclick="showPage('helpline')" class="helpline-link"><i class="fas fa-heartbeat"></i> Help Line</a></li>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode (Alt+D)">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <img src="college.jpeg" alt="college">
+                <h1>Savar Cantonment Public School and College</h1>
+                <p>Excellence in Education Since 1977 - Shaping Future Leaders with Discipline and Honor</p>
+                <a href="#" class="cta-button" onclick="showPage('about')">Discover Our Legacy</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">47</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Students</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Faculty Members</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>Academic Excellence</h3>
+                    <p>Consistently achieving outstanding results in SSC and HSC examinations with remarkable success rates and numerous scholarship recipients nationwide.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Military Discipline</h3>
+                    <p>Under the supervision of Bangladesh Army Education Corps, maintaining the highest standards of discipline and character development.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>Heritage & Pride</h3>
+                    <p>Located near the National Mausoleum, our institution embodies the spirit of liberation and national pride in education.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Experienced Faculty</h3>
+                    <p>Highly qualified and dedicated teachers committed to providing quality education and nurturing student potential in all aspects.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Modern Facilities</h3>
+                    <p>State-of-the-art laboratories, library, computer lab, and sports facilities to support comprehensive education and development.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-medal"></i></div>
+                    <h3>National Recognition</h3>
+                    <p>Proud position in Dhaka district with recognition for academic results, co-curricular activities, and organizational excellence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <h2 class="page-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Founding Journey</h3>
+                    <p>Savar Cantonment Public School and College (SCPSC) started its journey on 2nd February 1977. It was recognized as Junior High School on 1st January 1978 and as Secondary School on 1st January 1980. In 1987 the institution was named Savar Cantonment Public School. Subsequently, college section of the institution started functioning since 1st July 1993.</p>
+                    
+                    <h3>Leadership & Governance</h3>
+                    <p>The General Officer Commanding, 9 Infantry Division and Area Commander, Savar Area is the Chief Patron of the institution and the Commander, 9 Artillery Brigade is the Chairman of its governing Body.</p>
+                    
+                    <h3>Our Distinguished Location</h3>
+                    <p>Savar Cantonment Public School and College situated in the suburb of Dhaka, the capital of Bangladesh, is blessed with an excellent panoramic view easily capable of captivating the young minds. It is surrounded by the Savar golf course and very close to the national mausoleum - a pride, a glory and a lasting reminder of the great liberation war of Bangladesh and the Dhaka-Aricha highway almost equally bisects the two wings of the institution.</p>
+                </div>
+                <div class="about-image">
+                    <img src="savar-cantonment-public-school-and-college-98f648f6-f6c5-458a-8db3-d1f06b3d16f-resize-750.jpg" alt="SCPSC Campus">
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="college.jpeg" alt="SCPSC College Life">
+                </div>
+                <div class="about-text">
+                    <h3>Our Educational Philosophy</h3>
+                    <p>Its discipline, co-ordinated educational system and timely planned activities are widely known to each and every corner of the whole Savar area. It is a representative institution in Dhaka district that is giving its tireless effort to impart a balanced education in a very congenial atmosphere to make worthy and morally upright citizens capable of facing the new century challenges.</p>
+                    
+                    <h3>Recognition & Achievement</h3>
+                    <p>This institution has occupied a prominent, proud and envious position for its academic results, co-curricular and extracurricular activities, skilled management and unique organizational characteristics.</p>
+                    
+                    <h3>Our Commitment</h3>
+                    <p>It is earnestly believed that this institution will further be enriched and march forward with the advice, instruction and guidelines from and concerted effort of all concerned.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Academics Page -->
+    <div id="academics" class="page">
+        <div class="container">
+            <h2 class="page-title">Academic Programs</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-child"></i></div>
+                    <h3>Primary Section (Class I-V)</h3>
+                    <p>Foundation building with emphasis on basic literacy, numeracy, creative thinking, and personality development through interactive and child-friendly teaching methodologies.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Junior Secondary (Class VI-VIII)</h3>
+                    <p>Comprehensive curriculum covering all core subjects with emphasis on developing analytical thinking and study habits for future academic success.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Secondary Section (Class IX-X)</h3>
+                    <p>SSC preparation with specialized focus on Science, Commerce, and Arts streams following National Curriculum and Board requirements.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-university"></i></div>
+                    <h3>Higher Secondary (Class XI-XII)</h3>
+                    <p>HSC programs in Science, Commerce, and Arts streams preparing students for university admission and professional careers.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Computer Science & ICT</h3>
+                    <p>Modern computer education with programming, web development, and digital literacy skills using latest technology and software.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-language"></i></div>
+                    <h3>Language Programs</h3>
+                    <p>English language proficiency, Bangla literature, and Arabic studies to develop communication skills and cultural understanding.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>Science & Mathematics</h3>
+                    <p>Strong foundation in Physics, Chemistry, Biology, and Mathematics with practical laboratory work and problem-solving approach.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Arts & Humanities</h3>
+                    <p>History, Geography, Civics, and Fine Arts programs fostering creativity, cultural awareness, and critical thinking skills.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Commerce & Business</h3>
+                    <p>Accounting, Business Studies, and Economics preparing students for business careers and entrepreneurship opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Facilities Page -->
+    <div id="facilities" class="page">
+        <div class="container">
+            <h2 class="page-title">Our Facilities</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-book-reader"></i></div>
+                    <h3>Central Library</h3>
+                    <p>Extensive collection of over 15,000 books, journals, magazines, and digital resources with comfortable reading areas and research facilities for students and faculty.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>Science Laboratories</h3>
+                    <p>Fully equipped Physics, Chemistry, and Biology laboratories with modern instruments, safety equipment, and experimental facilities for hands-on learning.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-desktop"></i></div>
+                    <h3>Computer Laboratory</h3>
+                    <p>State-of-the-art computer lab with 60+ modern computers, high-speed internet, multimedia projectors, and latest software for programming and digital literacy.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-dumbbell"></i></div>
+                    <h3>Sports Complex</h3>
+                    <p>Large playground for football and cricket, basketball court, volleyball court, indoor games room, and gymnasium for physical education and sports activities.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-theater-masks"></i></div>
+                    <h3>Auditorium</h3>
+                    <p>Modern auditorium with seating capacity of 600+, advanced sound system, lighting, and stage facilities for cultural programs, seminars, and academic events.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Cafeteria</h3>
+                    <p>Hygienic and spacious cafeteria serving nutritious meals, snacks, and beverages with seating capacity for 300+ students and staff members.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-bus"></i></div>
+                    <h3>Transportation</h3>
+                    <p>Safe and reliable bus service with 20+ buses covering various routes in Dhaka and surrounding areas with trained drivers and conductors.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-clinic-medical"></i></div>
+                    <h3>Medical Center</h3>
+                    <p>On-campus medical facility with qualified medical officer, first aid equipment, and emergency care services for students and staff health needs.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-mosque"></i></div>
+                    <h3>Prayer Facilities</h3>
+                    <p>Dedicated prayer rooms and mosque facilities for students and staff to perform daily prayers and religious activities in a peaceful environment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Routine Page -->
+    <div id="routine" class="page">
+        <div class="container">
+            <h2 class="page-title">Academic Routine</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
+                    <h3>School Timings</h3>
+                    <p><strong>Morning Shift:</strong> 7:30 AM - 12:30 PM<br>
+                    <strong>Day Shift:</strong> 12:45 PM - 5:45 PM<br>
+                    <strong>Break Time:</strong> 30 minutes<br>
+                    <strong>Prayer Time:</strong> 15 minutes</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-calendar-week"></i></div>
+                    <h3>Weekly Schedule</h3>
+                    <p><strong>Classes:</strong> Saturday to Thursday<br>
+                    <strong>Weekend:</strong> Friday<br>
+                    <strong>Exam Days:</strong> As per academic calendar<br>
+                    <strong>Sports Day:</strong> Thursday afternoon</p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 2rem 0; color: var(--accent-color);">Class Routine - Morning Shift</h3>
+            <table class="routine-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:30-8:15</td>
+                        <td>Mathematics</td>
+                        <td>English</td>
+                        <td>Science</td>
+                        <td>Bangla</td>
+                        <td>Social Studies</td>
+                        <td>Mathematics</td>
+                    </tr>
+                    <tr>
+                        <td>8:15-9:00</td>
+                        <td>English</td>
+                        <td>Mathematics</td>
+                        <td>Bangla</td>
+                        <td>Science</td>
+                        <td>English</td>
+                        <td>Computer</td>
+                    </tr>
+                    <tr>
+                        <td>9:00-9:45</td>
+                        <td>Science</td>
+                        <td>Bangla</td>
+                        <td>Mathematics</td>
+                        <td>English</td>
+                        <td>Science</td>
+                        <td>Arts & Crafts</td>
+                    </tr>
+                    <tr>
+                        <td>9:45-10:15</td>
+                        <td colspan="6" style="text-align: center; background: #f8f9fa; font-weight: bold;">BREAK TIME</td>
+                    </tr>
+                    <tr>
+                        <td>10:15-11:00</td>
+                        <td>Bangla</td>
+                        <td>Social Studies</td>
+                        <td>English</td>
+                        <td>Mathematics</td>
+                        <td>Bangla</td>
+                        <td>Physical Education</td>
+                    </tr>
+                    <tr>
+                        <td>11:00-11:45</td>
+                        <td>Social Studies</td>
+                        <td>Science</td>
+                        <td>Computer</td>
+                        <td>Social Studies</td>
+                        <td>Mathematics</td>
+                        <td>Music</td>
+                    </tr>
+                    <tr>
+                        <td>11:45-12:30</td>
+                        <td>Physical Education</td>
+                        <td>Arts & Crafts</td>
+                        <td>Physical Education</td>
+                        <td>Computer</td>
+                        <td>Arts & Crafts</td>
+                        <td>Library Period</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cards-grid" style="margin-top: 3rem;">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Academic Calendar 2024</h3>
+                    <p><strong>New Session:</strong> January 1, 2024<br>
+                    <strong>First Term Exam:</strong> April 2024<br>
+                    <strong>Mid-term Break:</strong> May 2024<br>
+                    <strong>Final Exam:</strong> November 2024<br>
+                    <strong>Winter Break:</strong> December 2024</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <h3>Examination Schedule</h3>
+                    <p><strong>Class Tests:</strong> Monthly<br>
+                    <strong>Term Exams:</strong> Quarterly<br>
+                    <strong>Pre-test Exams:</strong> Before Board Exams<br>
+                    <strong>Board Exams:</strong> February/April<br>
+                    <strong>Result Publication:</strong> Within 60 days</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-star"></i></div>
+                    <h3>Special Programs</h3>
+                    <p><strong>Morning Assembly:</strong> Daily 7:25 AM<br>
+                    <strong>Cultural Week:</strong> February<br>
+                    <strong>Science Fair:</strong> March<br>
+                    <strong>Sports Week:</strong> November<br>
+                    <strong>Annual Prize Giving:</strong> December</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Information Page -->
+    <div id="information" class="page">
+        <div class="container">
+            <h2 class="page-title">Official Information</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-university"></i></div>
+                    <h3>Institution Details</h3>
+                    <p><strong>Established:</strong> February 2, 1977<br>
+                    <strong>Recognition:</strong> Junior High (1978), Secondary (1980)<br>
+                    <strong>College Section:</strong> Started July 1, 1993<br>
+                    <strong>EIIN Code:</strong> 108459<br>
+                    <strong>School Code:</strong> 1527 | <strong>College Code:</strong> 1927<br>
+                    <strong>Board:</strong> Dhaka Education Board</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-award"></i></div>
+                    <h3>Recent Achievements</h3>
+                    <p><strong>2024:</strong> Best Institution Head (College) - National Education Week<br>
+                    <strong>2024:</strong> National School College Debate Competition Winner<br>
+                    <strong>2025:</strong> Inter-school Cultural & Talent Search<br>
+                    <strong>Academic Excellence:</strong> Consistent 100% pass rate<br>
+                    <strong>Alumni Success:</strong> Distinguished graduates nationwide</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-users-cog"></i></div>
+                    <h3>Administrative Structure</h3>
+                    <p><strong>Chief Patron:</strong> GOC, 9 Infantry Division<br>
+                    <strong>Chairman:</strong> Commander, 9 Artillery Brigade<br>
+                    <strong>Principal:</strong> Colonel Abu Nasser Talukder<br>
+                    <strong>Supervision:</strong> Bangladesh Army Education Corps<br>
+                    <strong>Campus Size:</strong> 17 acres</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Current Statistics</h3>
+                    <p><strong>Total Students:</strong> 4,560 enrolled<br>
+                    <strong>Faculty Members:</strong> 200+ qualified teachers<br>
+                    <strong>Languages:</strong> Bangla and English<br>
+                    <strong>Motto:</strong> জ্ঞানই আলো (Knowledge is Light)<br>
+                    <strong>Colors:</strong> Red, Blue, Green, and Yellow</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Digital Resources</h3>
+                    <p><strong>Official Website:</strong> www.scpsc.edu.bd<br>
+                    <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e794849794848881818e8482a7808a868e8bc984888a">[email&#160;protected]</a><br>
+                    <strong>Phone:</strong> +8801769095174<br>
+                    <strong>Annual Publication:</strong> উন্মেষ<br>
+                    <strong>Online Services:</strong> Digital content & resources</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Community Engagement</h3>
+                    <p><strong>Parent-Teacher Association:</strong> Active participation<br>
+                    <strong>Alumni Network:</strong> 10,000+ graduates<br>
+                    <strong>Social Service:</strong> Community outreach programs<br>
+                    <strong>Environmental Projects:</strong> Green campus initiatives<br>
+                    <strong>Cultural Exchange:</strong> Inter-school programs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admission Page -->
+    <div id="admission" class="page">
+        <div class="container">
+            <h2 class="page-title">Admission Information</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Admission Schedule 2025</h3>
+                    <p><strong>Application Period:</strong> December 1-31, 2024<br>
+                    <strong>Entrance Test:</strong> February 15, 2025<br>
+                    <strong>Interview:</strong> February 20-25, 2025<br>
+                    <strong>Results:</strong> March 1, 2025<br>
+                    <strong>Classes Begin:</strong> January 1, 2025</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Required Documents</h3>
+                    <p>• Original Birth Certificate<br>
+                    • Previous Academic Transcripts<br>
+                    • 4 copies Passport Size Photos<br>
+                    • Guardian's NID Copy<br>
+                    • Medical Certificate<br>
+                    • Character Certificate</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Fee Structure 2025</h3>
+                    <p><strong>Admission Fee:</strong> ৳20,000-30,000<br>
+                    <strong>Monthly Tuition:</strong> ৳3,000-5,000<br>
+                    <strong>Transport Fee:</strong> ৳2,000-4,000<br>
+                    <strong>Books & Uniform:</strong> ৳10,000-15,000<br>
+                    <strong>Lab Fee:</strong> ৳1,500 (Annual)</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Admission Criteria</h3>
+                    <p>• Age requirements as per class<br>
+                    • Written entrance examination (60%)<br>
+                    • Oral interview assessment (25%)<br>
+                    • Previous academic performance (15%)<br>
+                    • Availability of seats<br>
+                    • Guardian's interview</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Class-wise Requirements</h3>
+                    <p><strong>Class I:</strong> Age 5+ years<br>
+                    <strong>Class VI:</strong> PSC/Equivalent with GPA 3.0+<br>
+                    <strong>Class IX:</strong> JSC/Equivalent with GPA 3.5+<br>
+                    <strong>Class XI:</strong> SSC/Equivalent with GPA 4.0+<br>
+                    <strong>Transfer:</strong> Previous school TC required</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Admission Helpline</h3>
+                    <p><strong>Phone:</strong> +880-2-7745466<br>
+                    <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c3d3831352f2f3533321c2f3f2c2f3f72393829723e38">[email&#160;protected]</a><br>
+                    <strong>Office Hours:</strong> 9 AM - 4 PM<br>
+                    <strong>Address:</strong> Admission Office<br>
+                    SCPSC, Savar Cantonment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery" class="page">
+        <div class="container">
+            <h2 class="page-title">Campus Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="college.jpeg" alt="SCPSC Main Campus">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>SCPSC Main Campus</h4>
+                        <p>The main campus of Savar Cantonment Public School showcasing our beautiful educational environment and modern infrastructure.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="savar-cantonment-public-school-and-college-98f648f6-f6c5-458a-8db3-d1f06b3d16f-resize-750.jpg" alt="Campus Life">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Vibrant Campus Life</h4>
+                        <p>Students engaging in various academic and extracurricular activities, fostering a dynamic learning environment.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="download (1).jpeg" alt="Transport system">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Transport system</h4>
+                        <p>Safe and trustworthy transport system for students for safe traveling.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="download (3).jpeg" alt="Students">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Students in (Scpsc)</h4>
+                        <p>Some mesmerizing moment of students in (Scpsc) campus.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images.jpeg" alt="Cultural festival">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Cultural festival</h4>
+                        <p>Scpsc arrange cultural festival for every students to show their talent.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="download.jpeg" alt="Campus Area">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Campus Area</h4>
+                        <p>Scpsc have vast area to betterment the education system for students.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="logo.jpeg" alt="logo">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Scpsc logo</h4>
+                        <p>Scpsc logo</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cards-grid" style="margin-top: 3rem;">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-camera"></i></div>
+                    <h3>Campus Life</h3>
+                    <p>Experience the vibrant campus life at SCPSC with modern facilities, green spaces, and a conducive learning environment that fosters growth and development.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-building"></i></div>
+                    <h3>Infrastructure</h3>
+                    <p>State-of-the-art buildings, well-equipped classrooms, and modern facilities designed for optimal learning experiences and student comfort.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-tree"></i></div>
+                    <h3>Green Campus</h3>
+                    <p>Beautiful landscaped grounds surrounded by Savar golf course, providing a serene and inspiring educational environment for all students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="container">
+            <h2 class="page-title">Contact Us</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Address</h3>
+                    <p>Savar Cantonment Public School and College<br>
+                    Savar Cantonment, Dhaka-1344<br>
+                    Bangladesh<br><br>
+                    <strong>Landmark:</strong> Near Savar Golf Course<br>
+                    <strong>Highway:</strong> Dhaka-Aricha Highway</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Phone Numbers</h3>
+                    <p><strong>Main Office:</strong> +8801769095174<br>
+                    <strong>Principal:</strong> +880-2-7745465<br>
+                    <strong>Admission:</strong> +880-2-7745466<br>
+                    <strong>Accounts:</strong> +880-2-7745467<br>
+                    <strong>Transport:</strong> +880-2-7745468</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email Addresses</h3>
+                    <p><strong>General:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2b1a1b2b1a1ada4a4aba1a782a5afa3abaeeca1adaf">[email&#160;protected]</a><br>
+                    <strong>Principal:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bdcdcfd4d3ded4cddcd1fdcedecdcede93d8d9c893dfd9">[email&#160;protected]</a><br>
+                    <strong>Admission:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ceafaaa3a7bdbda7a1a08ebdadbebdade0abaabbe0acaa">[email&#160;protected]</a><br>
+                    <strong>Academic:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3150525055545c58527142524142521f5455441f5355">[email&#160;protected]</a><br>
+                    <strong>Transport:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3642445758454659444276455546455518535243185452">[email&#160;protected]</a></p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Online Presence</h3>
+                    <p><strong>Website:</strong> www.scpsc.edu.bd<br>
+                    <strong>Facebook:</strong> SCPSC Official<br>
+                    <strong>YouTube:</strong> SCPSC Channel<br>
+                    <strong>LinkedIn:</strong> SCPSC Alumni<br>
+                    Follow us for latest updates and news</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Office Hours</h3>
+                    <p><strong>Working Days:</strong> Saturday to Thursday<br>
+                    <strong>Office Time:</strong> 8:00 AM - 4:00 PM<br>
+                    <strong>Lunch Break:</strong> 1:00 PM - 2:00 PM<br>
+                    <strong>Weekend:</strong> Friday (Closed)<br>
+                    <strong>Emergency:</strong> 24/7 Contact Available</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Key Personnel</h3>
+                    <p><strong>Chief Patron:</strong> GOC, 9 Infantry Division<br>
+                    <strong>Chairman:</strong> Commander, 9 Artillery Brigade<br>
+                    <strong>Principal:</strong> Colonel Abu Nasser Talukder<br>
+                    <strong>Vice Principal:</strong> Academic matters<br>
+                    <strong>Admin Officer:</strong> Administrative queries</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3><i class="fas fa-paper-plane"></i> Send us a Message</h3>
+                <form onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="category"><i class="fas fa-list"></i> Inquiry Category</label>
+                        <select id="category" name="category">
+                            <option value="">Select Category</option>
+                            <option value="admission">Admission Inquiry</option>
+                            <option value="academic">Academic Information</option>
+                            <option value="transport">Transport Service</option>
+                            <option value="facilities">Facilities & Infrastructure</option>
+                            <option value="general">General Query</option>
+                            <option value="complaint">Complaint/Suggestion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Enter message subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Enter your detailed message here..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Line Page (Blood Donor System) -->
+    <div id="helpline" class="page">
+        <div class="container">
+            <div class="blood-donor-section">
+                <h2><i class="fas fa-heartbeat"></i> SCPSC Blood Donor Help Line</h2>
+                <p style="text-align: center; font-size: 1.3rem; margin-bottom: 3rem;">
+                    Save Lives - Be a Hero! Join our student blood donor community and help fellow students in emergency situations.
+                </p>
+
+                <!-- Emergency Contact -->
+                <div class="emergency-contact">
+                    <h4><i class="fas fa-phone-alt"></i> Emergency Blood Request</h4>
+                    <p>Call: +880-1769-095174 (24/7 Available)</p>
+                    <p>WhatsApp: +880-1769-095175</p>
+                </div>
+
+                <!-- Blood Groups Grid -->
+                <h3 style="text-align: center; margin: 3rem 0 2rem; font-size: 2.5rem;">Available Blood Groups</h3>
+                <div class="blood-groups-grid">
+                    <div class="blood-group-card">
+                        <h3>A+</h3>
+                        <p id="count-a-positive">0 Donors</p>
+                    </div>
+                    <div class="blood-group-card">
+                        <h3>A-</h3>
+                        <p id="count-a-negative">0 Donors</p>
+                    </div>
+                    <div class="blood-group-card">
+                        <h3>B+</h3>
+                        <p id="count-b-positive">0 Donors</p>
+                    </div>
+                    <div class="blood-group-card">
+                        <h3>B-</h3>
+                        <p id="count-b-negative">0 Donors</p>
+                    </div>
+                    <div class="blood-group-card">
+                        <h3>AB+</h3>
+                        <p id="count-ab-positive">0 Donors</p>
+                    </div>
+                    <div class="blood-group-card">
+                        <h3>AB-</h3>
+                        <p id="count-ab-negative">0 Donors</p>
+                    </div>
+                    <div class="blood-group-card">
+                        <h3>O+</h3>
+                        <p id="count-o-positive">0 Donors</p>
+                    </div>
+                    <div class="blood-group-card">
+                        <h3>O-</h3>
+                        <p id="count-o-negative">0 Donors</p>
+                    </div>
+                </div>
+
+                <!-- Donor Registration Form -->
+                <div class="donor-form">
+                    <h3><i class="fas fa-user-plus"></i> Register as Blood Donor</h3>
+                    <form id="donorForm" onsubmit="addDonor(event)">
+                        <div class="form-group">
+                            <label for="studentName"><i class="fas fa-user"></i> Student Name</label>
+                            <input type="text" id="studentName" name="studentName" required placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentId"><i class="fas fa-id-card"></i> Student ID</label>
+                            <input type="text" id="studentId" name="studentId" required placeholder="Enter student ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentClass"><i class="fas fa-graduation-cap"></i> Class</label>
+                            <select id="studentClass" name="studentClass" required>
+                                <option value="">Select Class</option>
+                                <option value="Class 6">Class 6</option>
+                                <option value="Class 7">Class 7</option>
+                                <option value="Class 8">Class 8</option>
+                                <option value="Class 9">Class 9</option>
+                                <option value="Class 10">Class 10</option>
+                                <option value="HSC 1st Year">HSC 1st Year</option>
+                                <option value="HSC 2nd Year">HSC 2nd Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bloodGroup"><i class="fas fa-tint"></i> Blood Group</label>
+                            <select id="bloodGroup" name="bloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+ (A Positive)</option>
+                                <option value="A-">A- (A Negative)</option>
+                                <option value="B+">B+ (B Positive)</option>
+                                <option value="B-">B- (B Negative)</option>
+                                <option value="AB+">AB+ (AB Positive)</option>
+                                <option value="AB-">AB- (AB Negative)</option>
+                                <option value="O+">O+ (O Positive)</option>
+                                <option value="O-">O- (O Negative)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber"><i class="fas fa-phone"></i> Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastDonation"><i class="fas fa-calendar"></i> Last Donation Date (Optional)</label>
+                            <input type="date" id="lastDonation" name="lastDonation">
+                        </div>
+                        <button type="submit" class="donor-submit-btn">
+                            <i class="fas fa-heart"></i> Register as Donor
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Donors Table -->
+                <h3 style="text-align: center; margin: 3rem 0 2rem; font-size: 2.5rem;">Registered Blood Donors</h3>
+                <div style="overflow-x: auto;">
+                    <table class="donors-table" id="donorsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Student ID</th>
+                                <th>Class</th>
+                                <th>Blood Group</th>
+                                <th>Phone</th>
+                                <th>Last Donation</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="donorsTableBody">
+                            <!-- Donor entries will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Blood Donation Guidelines -->
+                <div class="emergency-contact" style="margin-top: 3rem;">
+                    <h4><i class="fas fa-info-circle"></i> Blood Donation Guidelines</h4>
+                    <p style="text-align: left; font-size: 1rem; line-height: 1.6;">
+                        • Must be 18+ years old and weigh at least 50kg<br>
+                        • Wait 3 months between donations<br>
+                        • Be in good health with no recent illness<br>
+                        • Avoid alcohol 24 hours before donation<br>
+                        • Eat well and stay hydrated before donating
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Gallery Image">
+            <div class="lightbox-info">
+                <h4 id="lightbox-title"></h4>
+                <p id="lightbox-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Developer Section -->
+    <div class="developer-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem;">Meet Our Developer Team</h2>
+            <div class="developer-grid">
+                <div class="developer-card">
+                    <img src="Messenger_creation_4130F9A7-F6DF-4C6A-AA9E-9455A67FFB88.jpeg" alt="Fahim Ahmed" class="developer-avatar">
+                    <div class="developer-name">Fahim Ahmed</div>
+                    <div class="developer-role">Lead Full-Stack Developer</div>
+                    <div class="developer-bio">
+                        Specialized in modern web technologies including html,css and js. 
+                        Passionate about creating user-friendly educational platforms and has 1+ years of experience 
+                        in developing school management systems.
+                    </div>
+                </div>
+                <div class="developer-card">
+                    <img src="download (4).jpeg" alt="Nur Muhammad" class="developer-avatar">
+                    <div class="developer-name">Nur</div>
+                    <div class="developer-role">Frontend designer</div>
+                    <div class="developer-bio">
+                      Expert in designing frontend design of website by using css with more features and experience in css of 2+ years.
+
+                    </div>
+                </div>
+                <div class="developer-card">
+                    <img src="tamim.jpg" alt="Junaied Tamim" class="developer-avatar">
+                    <div class="developer-name">Junaied Tamim</div>
+                    <div class="developer-role">Backend Developer</div>
+                    <div class="developer-bio">
+                        Specialized in server-side development, database optimization, and security implementation. 
+                        Expert in creating robust admin panels and content management systems. 
+                        Ensures data security and system reliability for educational institutions.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Savar Cantonment Public School and College. All rights reserved.</p>
+            <p>Excellence in Education Since 1977 | Under Bangladesh Army Education Corps Supervision</p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i> Savar Cantonment, Dhaka-1344 | 
+                <i class="fas fa-phone"></i> +8801769095174 | 
+                <i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2d1c1d2d1c1cdc4c4cbc1c7e2c5cfc3cbce8cc1cdcf">[email&#160;protected]</a>
+            </p>
+            <p>Keyboard Shortcuts: Alt+D (Dark Mode) | Alt+H (Home) | Alt+A (About) | Alt+C (Contact) | Alt+G (Gallery) | Alt+L (Help Line)</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Blood Donor System Data
+        let bloodDonors = JSON.parse(localStorage.getItem('scpscBloodDonors')) || [];
+
+        // Theme Management
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            
+            // Add theme transition
+            document.body.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Add transition effect
+            document.body.style.opacity = '0.8';
+            
+            setTimeout(() => {
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+                
+                document.body.style.opacity = '1';
+                
+                // Show notification
+                showNotification(`Switched to ${newTheme} mode`, 'success');
+            }, 150);
+        }
+
+        function updateThemeIcon(theme) {
+            const themeIcon = document.querySelector('.theme-toggle i');
+            if (themeIcon) {
+                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+
+        // Navigation functionality with smooth animations
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            const targetPage = document.getElementById(pageId);
+            
+            if (!targetPage) return;
+            
+            // Hide current page with fade out
+            const currentPage = document.querySelector('.page.active');
+            if (currentPage) {
+                currentPage.style.opacity = '0';
+                currentPage.style.transform = 'translateY(-20px)';
+                
+                setTimeout(() => {
+                    currentPage.classList.remove('active');
+                    
+                    // Show new page with fade in
+                    targetPage.classList.add('active');
+                    targetPage.style.opacity = '0';
+                    targetPage.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        targetPage.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        targetPage.style.opacity = '1';
+                        targetPage.style.transform = 'translateY(0)';
+                    }, 50);
+                    
+                }, 300);
+            } else {
+                targetPage.classList.add('active');
+            }
+            
+            // Close mobile menu
+            const navMenu = document.querySelector('.nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update page title
+            updatePageTitle(pageId);
+
+            // Load blood donors if helpline page
+            if (pageId === 'helpline') {
+                loadBloodDonors();
+                updateBloodGroupCounts();
+            }
+        }
+
+        function updatePageTitle(pageId) {
+            const titles = {
+                'home': 'SCPSC - Home',
+                'about': 'SCPSC - About Us',
+                'academics': 'SCPSC - Academics',
+                'facilities': 'SCPSC - Facilities',
+                'routine': 'SCPSC - Academic Routine',
+                'information': 'SCPSC - Information',
+                'admission': 'SCPSC - Admission',
+                'gallery': 'SCPSC - Gallery',
+                'contact': 'SCPSC - Contact Us',
+                'helpline': 'SCPSC - Blood Donor Help Line'
+            };
+            
+            document.title = titles[pageId] || 'Savar Cantonment Public School and College';
+        }
+
+        // Mobile menu toggle with animation
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Animate menu items
+            if (navMenu.classList.contains('active')) {
+                const menuItems = navMenu.querySelectorAll('li');
+                menuItems.forEach((item, index) => {
+                    item.style.animation = `menuItemSlide 0.3s ease ${index * 0.1}s both`;
+                });
+            }
+        }
+
+        // Blood Donor System Functions
+        function addDonor(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            const donor = {
+                id: Date.now(),
+                name: formData.get('studentName'),
+                studentId: formData.get('studentId'),
+                class: formData.get('studentClass'),
+                bloodGroup: formData.get('bloodGroup'),
+                phone: formData.get('phoneNumber'),
+                lastDonation: formData.get('lastDonation') || 'Never',
+                registeredDate: new Date().toLocaleDateString(),
+                status: 'Available'
+            };
+
+            // Check if student ID already exists
+            if (bloodDonors.some(d => d.studentId === donor.studentId)) {
+                showNotification('Student ID already registered!', 'error');
+                return;
+            }
+
+            bloodDonors.push(donor);
+            localStorage.setItem('scpscBloodDonors', JSON.stringify(bloodDonors));
+            
+            loadBloodDonors();
+            updateBloodGroupCounts();
+            form.reset();
+            
+            showNotification(`${donor.name} registered successfully as ${donor.bloodGroup} donor!`, 'success');
+        }
+
+        function loadBloodDonors() {
+            const tableBody = document.getElementById('donorsTableBody');
+            if (!tableBody) return;
+
+            tableBody.innerHTML = '';
+            
+            bloodDonors.forEach(donor => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${donor.name}</td>
+                    <td>${donor.studentId}</td>
+                    <td>${donor.class}</td>
+                    <td><span class="blood-group-badge">${donor.bloodGroup}</span></td>
+                    <td>${donor.phone}</td>
+                    <td>${donor.lastDonation}</td>
+                    <td>${donor.status}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function updateBloodGroupCounts() {
+            const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+            
+            bloodGroups.forEach(group => {
+                const count = bloodDonors.filter(donor => donor.bloodGroup === group).length;
+                const elementId = `count-${group.toLowerCase().replace('+', '-positive').replace('-', '-negative')}`;
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = `${count} Donor${count !== 1 ? 's' : ''}`;
+                }
+            });
+        }
+
+        // Enhanced Gallery with lightbox
+        function initializeGallery() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxDesc = document.getElementById('lightbox-desc');
+            const lightboxClose = document.querySelector('.lightbox-close');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    const title = item.querySelector('h4').textContent;
+                    const desc = item.querySelector('p').textContent;
+                    
+                    lightboxImg.src = img.src;
+                    lightboxTitle.textContent = title;
+                    lightboxDesc.textContent = desc;
+                    
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Add entrance animation
+                    setTimeout(() => {
+                        lightbox.querySelector('.lightbox-content').style.transform = 'scale(1)';
+                        lightbox.querySelector('.lightbox-content').style.opacity = '1';
+                    }, 50);
+                });
+            });
+
+            function closeLightbox() {
+                const content = lightbox.querySelector('.lightbox-content');
+                content.style.transform = 'scale(0.8)';
+                content.style.opacity = '0';
+                
+                setTimeout(() => {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+        }
+
+        // Enhanced form submission with animations
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state with animation
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            submitBtn.style.transform = 'scale(0.95)';
+            
+            // Animate form fields
+            const formGroups = form.querySelectorAll('.form-group');
+            formGroups.forEach((group, index) => {
+                setTimeout(() => {
+                    group.style.transform = 'translateX(-10px)';
+                    setTimeout(() => {
+                        group.style.transform = 'translateX(0)';
+                    }, 100);
+                }, index * 50);
+            });
+            
+            // Simulate form submission
+            setTimeout(() => {
+                showNotification('Thank you for your message! We will get back to you soon.', 'success');
+                form.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.transform = 'scale(1)';
+                
+                // Success animation
+                submitBtn.style.background = '#27ae60';
+                setTimeout(() => {
+                    submitBtn.style.background = '';
+                }, 2000);
+                
+            }, 2000);
+        }
+
+        // Enhanced navbar scroll effect
+        function initializeNavbarScroll() {
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    navbar.classList.add('scrolled');
+                    
+                    // Hide/show navbar based on scroll direction
+                    if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                        navbar.style.transform = 'translateY(-100%)';
+                    } else {
+                        navbar.style.transform = 'translateY(0)';
+                    }
+                } else {
+                    navbar.classList.remove('scrolled');
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+        }
+
+        // Enhanced counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                const increment = target / 150;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        const finalText = counter.textContent.includes('+') ? target + '+' : 
+                                        counter.textContent.includes('%') ? target + '%' : target;
+                        counter.textContent = finalText;
+                        clearInterval(timer);
+                        
+                        // Add completion animation
+                        counter.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            counter.style.transform = 'scale(1)';
+                        }, 200);
+                    } else {
+                        const displayValue = Math.floor(current);
+                        const displayText = counter.textContent.includes('+') ? displayValue + '+' : 
+                                          counter.textContent.includes('%') ? displayValue + '%' : displayValue;
+                        counter.textContent = displayText;
+                    }
+                }, 20);
+            });
+        }
+
+        // Intersection Observer for animations
+        function initializeObserver() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        
+                        // Animate stats
+                        if (element.querySelector('.stats')) {
+                            animateCounters();
+                        }
+                        
+                        // Animate cards
+                        if (element.classList.contains('card')) {
+                            element.style.animation = 'cardFadeIn 0.8s ease both';
+                        }
+                        
+                        // Animate gallery items
+                        if (element.classList.contains('gallery-item')) {
+                            element.style.animation = 'galleryFadeIn 0.8s ease both';
+                        }
+                        
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements
+            document.querySelectorAll('.card, .gallery-item, .stats').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Enhanced notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: -400px;
+                background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10001;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 600;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                backdrop-filter: blur(10px);
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Slide in
+            setTimeout(() => {
+                notification.style.right = '20px';
+            }, 100);
+            
+            // Slide out
+            setTimeout(() => {
+                notification.style.right = '-400px';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 400);
+            }, 4000);
+        }
+
+        // Back to top functionality with animation
+        function initializeBackToTop() {
+            const backToTopBtn = document.createElement('button');
+            backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            backToTopBtn.className = 'back-to-top';
+            
+            document.body.appendChild(backToTopBtn);
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                // Add click animation
+                backToTopBtn.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    backToTopBtn.style.transform = 'scale(1)';
+                }, 150);
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Loading animation
+        function showLoadingAnimation() {
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'loading-overlay';
+            loadingOverlay.innerHTML = '<div class="loading-spinner"></div>';
+            
+            document.body.appendChild(loadingOverlay);
+            
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(loadingOverlay);
+                }, 500);
+            }, 1500);
+        }
+
+        // Keyboard shortcuts
+        function initializeKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Alt + D for dark mode toggle
+                if (e.altKey && e.key === 'd') {
+                    e.preventDefault();
+                    toggleTheme();
+                }
+                
+                // Alt + H for home
+                if (e.altKey && e.key === 'h') {
+                    e.preventDefault();
+                    showPage('home');
+                }
+                
+                // Alt + A for about
+                if (e.altKey && e.key === 'a') {
+                    e.preventDefault();
+                    showPage('about');
+                }
+                
+                // Alt + C for contact
+                if (e.altKey && e.key === 'c') {
+                    e.preventDefault();
+                    showPage('contact');
+                }
+                
+                // Alt + G for gallery
+                if (e.altKey && e.key === 'g') {
+                    e.preventDefault();
+                    showPage('gallery');
+                }
+
+                // Alt + L for help line
+                if (e.altKey && e.key === 'l') {
+                    e.preventDefault();
+                    showPage('helpline');
+                }
+            });
+        }
+
+        // Page visibility change handler
+        function handleVisibilityChange() {
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    document.title = '👋 Come back to SCPSC!';
+                } else {
+                    const currentPage = document.querySelector('.page.active');
+                    if (currentPage) {
+                        updatePageTitle(currentPage.id);
+                    }
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        function initializeSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Add CSS animations dynamically
+        function addDynamicAnimations() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes menuItemSlide {
+                    0% {
+                        opacity: 0;
+                        transform: translateX(-20px);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                
+                @keyframes numberCount {
+                    0% { transform: scale(0.8); opacity: 0; }
+                    50% { transform: scale(1.1); }
+                    100% { transform: scale(1); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Initialize all functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show loading animation
+            showLoadingAnimation();
+            
+            // Initialize all features
+            setTimeout(() => {
+                initializeTheme();
+                initializeGallery();
+                initializeNavbarScroll();
+                initializeObserver();
+                initializeBackToTop();
+                initializeKeyboardShortcuts();
+                handleVisibilityChange();
+                initializeSmoothScroll();
+                addDynamicAnimations();
+                
+                // Load blood donor data
+                updateBloodGroupCounts();
+                
+                // Show welcome notification
+                setTimeout(() => {
+                    showNotification('Welcome to SCPSC! 🎓', 'success');
+                }, 2000);
+                
+            }, 1000);
+        });
+
+        // Handle page refresh
+        window.addEventListener('beforeunload', () => {
+            document.body.style.opacity = '0';
+        });
+
+        // Performance optimization
+        window.addEventListener('load', () => {
+            // Preload images
+            const imageUrls = [
+                'public/images/SavarCantonmentPublicSchoolandCollege.jpg',
+                'public/images/SCPSCLogo.jpg',
+                'public/images/College.jpg'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        });
+    </script>
+</body>
+</html>
